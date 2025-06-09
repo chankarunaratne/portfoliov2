@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const videoIntro = document.querySelector('.video-intro');
     const caseStudies = document.querySelector('.case-studies');
     const moreWork = document.querySelector('.more-work');
-    const otherWork = document.querySelector('.other-work-section');
-    const writingSection = document.querySelector('.writing-section'); // Added writing section
+    const otherWorkSection = document.querySelector('.other-work-section');
+    const writingSection = document.querySelector('.writing-section');
+    const articlesSection = document.querySelector('.articles-section');
 
     // Initial state - hide elements
     [
@@ -62,8 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
       videoIntro,
       caseStudies,
       moreWork,
-      otherWork,
+      otherWorkSection,
       writingSection,
+      articlesSection,
     ].forEach((el) => {
       if (el) {
         el.style.opacity = '0';
@@ -81,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
           el.style.transform = 'translateX(-50%) translateY(-20px)';
         } else if (el.classList.contains('writing-section')) {
           // Added writing section
+          el.style.transform = 'translateX(-50%) translateY(-20px)';
+        } else if (el.classList.contains('articles-section')) {
+          // Added articles section
           el.style.transform = 'translateX(-50%) translateY(-20px)';
         }
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
@@ -117,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 700);
 
     setTimeout(() => {
-      if (otherWork) {
-        otherWork.style.opacity = '1';
-        otherWork.style.transform = 'translateX(-50%) translateY(0)';
+      if (otherWorkSection) {
+        otherWorkSection.style.opacity = '1';
+        otherWorkSection.style.animation = 'slideUp 1s ease-out forwards';
       }
     }, 900);
 
@@ -127,9 +132,17 @@ document.addEventListener('DOMContentLoaded', function () {
       // Added writing section
       if (writingSection) {
         writingSection.style.opacity = '1';
-        writingSection.style.transform = 'translateX(-50%) translateY(0)';
+        writingSection.style.animation = 'slideUp 1s ease-out forwards';
       }
     }, 1100); // Staggered timing
+
+    setTimeout(() => {
+      // Added articles section
+      if (articlesSection) {
+        articlesSection.style.opacity = '1';
+        articlesSection.style.animation = 'slideUp 1s ease-out forwards';
+      }
+    }, 1300); // Staggered timing
   }
 
   // Start loading animation
@@ -161,9 +174,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }, observerOptions);
 
   // Observe elements for animation
-  const elementsToObserve = document.querySelectorAll(
-    '.case-card, .more-work-content, .other-work-item, .writing-content' // Added .writing-content
-  );
+  const elementsToObserve = [
+    '.hero-content',
+    '.video-content',
+    '.cards-container',
+    '.more-work-content',
+    '.other-work-container',
+    '.writing-content',
+    '.articles-content', // Added articles content for intersection observer
+  ];
   elementsToObserve.forEach((el) => observer.observe(el));
 
   // Add CSS for intersection observer animations

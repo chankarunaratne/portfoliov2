@@ -429,9 +429,87 @@ body {
 .writing-description {
   font-size: 16px;
   line-height: 24px;
-  color: var(--text-subdued);
+  color: #818898;
   margin: 0;
-  max-width: 319px;
+}
+
+/* Articles Section */
+.articles-section {
+  position: absolute;
+  top: 3421px; /* Position from Figma */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px; /* 2xl in Tailwind */
+  border: 1px solid #eceff3;
+  padding: 16px; /* py-4 (gap-4 implies padding around content) */
+  box-sizing: border-box;
+  opacity: 0; /* For animation */
+  animation: slideUp 1s ease-out forwards; /* For animation */
+}
+
+.articles-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* gap-4 from Figma */
+}
+
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.article-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 14px;
+  line-height: 20px;
+  color: #36394a; /* Text/Muted [600] */
+  margin: 0;
+}
+
+.article-read-time {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400; /* Regular */
+  font-size: 14px;
+  line-height: 20px;
+  color: #666d80; /* Text/Normal [500] */
+  margin: 0;
+}
+
+.read-article-btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; /* Medium */
+  font-size: 14px;
+  line-height: 20px;
+  color: #36394a; /* Text/Muted [600] */
+  background-color: #ffffff; /* Form/Button/Secondary/Normal */
+  border: 1px solid rgba(18, 55, 105, 0.08); /* shadow part */
+  box-shadow: 0px 1px 2px 0px rgba(164, 172, 185, 0.24);
+  border-radius: 6px; /* rounded-md */
+  padding: 4px 14px; /* py-1 px-3.5 */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease; /* Added transition */
+}
+
+.read-article-btn:hover {
+  background-color: #f8f9fa; /* Added hover effect */
+}
+
+.article-divider {
+  border: none;
+  height: 1px;
+  background-color: #eceff3; /* Matches border color of the container */
+  margin: 0; /* Reset margin */
 }
 
 /* Responsive adjustments */
