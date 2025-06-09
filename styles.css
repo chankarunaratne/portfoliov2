@@ -166,7 +166,7 @@ body {
 /* Video Intro Section */
 .video-intro {
   position: absolute;
-  top: 474px;
+  top: 410px;
   left: 50%;
   transform: translateX(-50%);
   width: 720px;
@@ -241,7 +241,7 @@ body {
 /* Case Studies Section */
 .case-studies {
   position: absolute;
-  top: 578px;
+  top: 514px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -304,7 +304,7 @@ body {
 /* More Work Section */
 .more-work {
   position: absolute;
-  top: 1010px;
+  top: 874px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -391,15 +391,5 @@ body {
 
 .case-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.video-intro {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.video-intro:hover {
-  transform: translateX(-50%) translateY(-1px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
