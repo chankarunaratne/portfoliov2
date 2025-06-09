@@ -53,22 +53,30 @@ document.addEventListener('DOMContentLoaded', function () {
     const videoIntro = document.querySelector('.video-intro');
     const caseStudies = document.querySelector('.case-studies');
     const moreWork = document.querySelector('.more-work');
+    const otherWork = document.querySelector('.other-work-section');
 
     // Initial state - hide elements
-    [hero, videoIntro, caseStudies, moreWork].forEach((el) => {
+    [hero, videoIntro, caseStudies, moreWork, otherWork].forEach((el) => {
       if (el) {
         el.style.opacity = '0';
         // Preserve the existing centering transform and add translateY (negative for top to bottom)
-        if (el === hero || el === videoIntro) {
+        if (
+          el.classList.contains('hero') ||
+          el.classList.contains('video-intro')
+        ) {
           el.style.transform = 'translateX(-50%) translateY(-20px)';
-        } else {
+        } else if (el.classList.contains('case-studies')) {
+          el.style.transform = 'translateX(-50%) translateY(-20px)';
+        } else if (el.classList.contains('more-work')) {
+          el.style.transform = 'translateX(-50%) translateY(-20px)';
+        } else if (el.classList.contains('other-work-section')) {
           el.style.transform = 'translateX(-50%) translateY(-20px)';
         }
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
       }
     });
 
-    // Animate in sequence
+    // Animate elements with staggered timing
     setTimeout(() => {
       if (hero) {
         hero.style.opacity = '1';
@@ -96,6 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
         moreWork.style.transform = 'translateX(-50%) translateY(0)';
       }
     }, 700);
+
+    setTimeout(() => {
+      if (otherWork) {
+        otherWork.style.opacity = '1';
+        otherWork.style.transform = 'translateX(-50%) translateY(0)';
+      }
+    }, 900);
   }
 
   // Start loading animation
@@ -128,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Observe elements for animation
   const elementsToObserve = document.querySelectorAll(
-    '.case-card, .more-work-content'
+    '.case-card, .more-work-content, .other-work-item'
   );
   elementsToObserve.forEach((el) => observer.observe(el));
 

@@ -166,7 +166,7 @@ body {
 /* Video Intro Section */
 .video-intro {
   position: absolute;
-  top: 410px;
+  top: 402px;
   left: 50%;
   transform: translateX(-50%);
   width: 720px;
@@ -241,7 +241,7 @@ body {
 /* Case Studies Section */
 .case-studies {
   position: absolute;
-  top: 514px;
+  top: 506px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -304,7 +304,7 @@ body {
 /* More Work Section */
 .more-work {
   position: absolute;
-  top: 874px;
+  top: 866px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -319,38 +319,67 @@ body {
 .bento-image {
   width: 108px;
   height: 108px;
-  border-radius: 12px;
-  overflow: hidden;
+  border-radius: 0;
 }
 
 .bento-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0;
 }
 
 .more-work-text {
-  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
+  text-align: center;
 }
 
 .more-work-title {
   font-size: 16px;
   line-height: 24px;
-  color: var(--text-muted);
   font-weight: 400;
+  color: var(--text-muted);
   margin: 0;
 }
 
 .more-work-description {
-  width: 319px;
   font-size: 16px;
   line-height: 24px;
   color: var(--text-subdued);
-  font-weight: 400;
   margin: 0;
+  max-width: 319px;
+}
+
+/* Other Work Section */
+.other-work-section {
+  position: absolute;
+  top: 1135px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+}
+
+.other-work-container {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  width: 100%;
+}
+
+.other-work-item {
+  width: 100%;
+  aspect-ratio: 2880 / 1792;
+  overflow: hidden;
+}
+
+.other-work-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Responsive adjustments */
