@@ -54,9 +54,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const caseStudies = document.querySelector('.case-studies');
     const moreWork = document.querySelector('.more-work');
     const otherWork = document.querySelector('.other-work-section');
+    const writingSection = document.querySelector('.writing-section'); // Added writing section
 
     // Initial state - hide elements
-    [hero, videoIntro, caseStudies, moreWork, otherWork].forEach((el) => {
+    [
+      hero,
+      videoIntro,
+      caseStudies,
+      moreWork,
+      otherWork,
+      writingSection,
+    ].forEach((el) => {
       if (el) {
         el.style.opacity = '0';
         // Preserve the existing centering transform and add translateY (negative for top to bottom)
@@ -70,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (el.classList.contains('more-work')) {
           el.style.transform = 'translateX(-50%) translateY(-20px)';
         } else if (el.classList.contains('other-work-section')) {
+          el.style.transform = 'translateX(-50%) translateY(-20px)';
+        } else if (el.classList.contains('writing-section')) {
+          // Added writing section
           el.style.transform = 'translateX(-50%) translateY(-20px)';
         }
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
@@ -111,6 +122,14 @@ document.addEventListener('DOMContentLoaded', function () {
         otherWork.style.transform = 'translateX(-50%) translateY(0)';
       }
     }, 900);
+
+    setTimeout(() => {
+      // Added writing section
+      if (writingSection) {
+        writingSection.style.opacity = '1';
+        writingSection.style.transform = 'translateX(-50%) translateY(0)';
+      }
+    }, 1100); // Staggered timing
   }
 
   // Start loading animation
@@ -143,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Observe elements for animation
   const elementsToObserve = document.querySelectorAll(
-    '.case-card, .more-work-content, .other-work-item'
+    '.case-card, .more-work-content, .other-work-item, .writing-content' // Added .writing-content
   );
   elementsToObserve.forEach((el) => observer.observe(el));
 

@@ -356,7 +356,7 @@ body {
 /* Other Work Section */
 .other-work-section {
   position: absolute;
-  top: 1135px;
+  top: 1122px;
   left: 50%;
   transform: translateX(-50%);
   width: 720px;
@@ -365,7 +365,7 @@ body {
 .other-work-container {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
   width: 100%;
 }
 
@@ -380,6 +380,58 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+/* Writing Section */
+.writing-section {
+  position: absolute;
+  top: 3159px; /* Corrected based on Figma data */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.writing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.notebook-image {
+  width: 108px;
+  height: 108px;
+  border-radius: 0;
+}
+
+.notebook-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.writing-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.writing-title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.writing-description {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-subdued);
+  margin: 0;
+  max-width: 319px;
 }
 
 /* Responsive adjustments */
