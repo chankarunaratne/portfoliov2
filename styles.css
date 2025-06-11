@@ -299,6 +299,26 @@ body {
   line-height: 24px;
   color: var(--text-muted);
   margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.card-cta::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: 4px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+/* Arrow animation on card hover */
+.case-card:hover .card-cta::after {
+  transform: rotate(45deg) translate(2px, -2px);
 }
 
 /* More Work Section */
