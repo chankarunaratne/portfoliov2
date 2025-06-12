@@ -1,5 +1,19 @@
 // Portfolio website animations and interactions
 document.addEventListener('DOMContentLoaded', function () {
+  // Navbar scrolling effect
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 10) {
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+      navbar.style.backdropFilter = 'blur(12px)';
+      navbar.style.webkitBackdropFilter = 'blur(12px)';
+    } else {
+      navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.80)';
+      navbar.style.backdropFilter = 'blur(8px)';
+      navbar.style.webkitBackdropFilter = 'blur(8px)';
+    }
+  });
+
   // Navigation links functionality
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach((link) => {
