@@ -46,12 +46,15 @@ body {
 
 /* Navbar */
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 720px;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .navbar-content {
@@ -59,6 +62,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 28px 0;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .logo-section {
@@ -636,11 +642,16 @@ body {
 
   /* Mobile navbar adjustments */
   .navbar {
-    position: relative !important;
+    position: fixed !important;
     top: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 10;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     margin-bottom: 0 !important; /* Remove margin to reduce top spacing */
   }
 
