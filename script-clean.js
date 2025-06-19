@@ -58,25 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
       '.other-work-section',
       '.writing-section',
       '.articles-section',
+      '.testimonials-section',
     ];
     elements.forEach((selector, index) => {
       const element = document.querySelector(selector);
       if (element) {
         setTimeout(() => {
           element.style.opacity = '1';
-          if (
-            element.classList.contains('hero') ||
-            element.classList.contains('video-intro') ||
-            element.classList.contains('case-studies') ||
-            element.classList.contains('more-work') ||
-            element.classList.contains('other-work-section') ||
-            element.classList.contains('writing-section') ||
-            element.classList.contains('articles-section')
-          ) {
-            element.style.transform = 'translateX(-50%) translateY(0)';
-          } else {
-            element.style.transform = 'translateY(0)';
-          }
+          element.style.transform = 'translateY(0)';
         }, index * 200);
       }
     });
@@ -91,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     '.other-work-section',
     '.writing-section',
     '.articles-section',
+    '.testimonials-section',
   ];
 
   elementsToHide.forEach((selector) => {
@@ -99,20 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
       element.style.opacity = '0';
       element.style.transition =
         'opacity 0.6s ease-out, transform 0.6s ease-out';
-
-      if (
-        element.classList.contains('hero') ||
-        element.classList.contains('video-intro') ||
-        element.classList.contains('case-studies') ||
-        element.classList.contains('more-work') ||
-        element.classList.contains('other-work-section') ||
-        element.classList.contains('writing-section') ||
-        element.classList.contains('articles-section')
-      ) {
-        element.style.transform = 'translateX(-50%) translateY(-20px)';
-      } else {
-        element.style.transform = 'translateY(20px)';
-      }
+      element.style.transform = 'translateY(20px)';
     }
   });
 });

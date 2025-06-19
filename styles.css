@@ -42,6 +42,7 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  padding-top: 112px; /* Account for fixed navbar height */
 }
 
 /* Navbar */
@@ -115,11 +116,9 @@ body {
 
 /* Hero Section */
 .hero {
-  position: absolute;
-  top: 112px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 32px;
   width: 720px;
+  max-width: 90%;
   background-color: var(--bg-normal);
   border-radius: 32px;
 }
@@ -172,11 +171,9 @@ body {
 
 /* Video Intro Section */
 .video-intro {
-  position: absolute;
-  top: 402px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 32px;
   width: 720px;
+  max-width: 90%;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   border: 1px solid #eceff3;
@@ -249,15 +246,14 @@ body {
 
 /* Case Studies Section */
 .case-studies {
-  position: absolute;
-  top: 506px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 96px;
+  max-width: 90%;
 }
 
 .cards-container {
   display: flex;
   gap: 24px;
+  justify-content: center;
 }
 
 .case-card {
@@ -332,10 +328,8 @@ body {
 
 /* More Work Section */
 .more-work {
-  position: absolute;
-  top: 866px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 48px;
+  max-width: 90%;
 }
 
 .more-work-content {
@@ -384,11 +378,9 @@ body {
 
 /* Other Work Section */
 .other-work-section {
-  position: absolute;
-  top: 1140px; /* Adjusted from 1122px to create a bigger gap */
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 96px;
   width: 720px;
+  max-width: 90%;
 }
 
 .other-work-container {
@@ -413,10 +405,8 @@ body {
 
 /* Writing Section */
 .writing-section {
-  position: absolute;
-  top: 3159px; /* Corrected based on Figma data */
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 48px;
+  max-width: 90%;
 }
 
 .writing-content {
@@ -465,11 +455,9 @@ body {
 
 /* Articles Section */
 .articles-section {
-  position: absolute;
-  top: 3421px; /* Position from Figma */
-  left: 50%;
-  transform: translateX(-50%);
+  margin: 0 auto 124px;
   width: 720px;
+  max-width: 90%;
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 16px; /* 2xl in Tailwind */
   border: 1px solid #eceff3;
@@ -542,12 +530,64 @@ body {
   margin: 0; /* Reset margin */
 }
 
+/* Testimonials Section */
+.testimonials-section {
+  margin: 0 auto 48px;
+  max-width: 720px;
+  width: 90%;
+}
+
+.testimonials-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.envelope-image {
+  width: 108px;
+  height: 108px;
+  border-radius: 0;
+}
+
+.envelope-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.testimonials-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.testimonials-title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.testimonials-description {
+  font-size: 16px;
+  line-height: 24px;
+  color: #818898;
+  margin: 0;
+  width: 320px; /* Added fixed width */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   /* Container adjustments */
   .home {
     min-height: auto;
     padding-bottom: 40px;
+    padding-top: 80px; /* Reduce top padding on mobile */
   }
 
   .navbar,
@@ -557,62 +597,42 @@ body {
   .more-work,
   .other-work-section,
   .writing-section,
-  .articles-section {
+  .articles-section,
+  .testimonials-section {
     width: 90% !important;
     max-width: 720px !important;
   }
 
-  /* Fix mobile positioning to prevent overlap */
+  /* Reduce margins on mobile */
   .hero {
-    position: relative !important;
-    top: 0 !important; /* Remove fixed top positioning */
-    margin-top: 20px !important; /* Add margin instead of top positioning */
-    margin-bottom: 32px !important; /* Normal gap to prevent overlap */
+    margin-bottom: 32px;
   }
 
   .video-intro {
-    position: relative !important;
-    top: 0 !important; /* Reset top position */
-    margin-bottom: 32px; /* Add gap after video-intro */
+    margin-bottom: 32px;
   }
 
   .case-studies {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%);
     margin-bottom: 32px;
   }
 
   .more-work {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%);
     margin-bottom: 32px;
   }
 
   .other-work-section {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%);
     margin-bottom: 32px;
   }
 
   .writing-section {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%);
     margin-bottom: 32px;
   }
 
   .articles-section {
-    position: relative !important;
-    top: 0 !important;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-bottom: 32px;
+  }
+
+  .testimonials-section {
     margin-bottom: 32px;
   }
 
