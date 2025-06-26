@@ -766,7 +766,6 @@ body {
 @media (max-width: 600px) {
   .footer-credit {
     max-width: 90vw;
-    font-size: 13px;
   }
   .footer-section {
     margin-top: 40px;
