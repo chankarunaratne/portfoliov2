@@ -1,54 +1,34 @@
 // Portfolio website animations and interactions
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Initial state - hide elements that need animation (MUST RUN FIRST)
-  const elementsToHide = [
-    '.hero',
-    '.video-intro',
-    '.case-studies',
-    '.more-work',
-    '.other-work-section',
-    '.writing-section',
-    '.articles-section',
-    '.testimonials-section',
-    '.final-illustration-section',
-    '.footer-section',
+  // Sequential spring blur animation system
+  const elementsToAnimate = [
+    { selector: '.navbar', delay: 300 },
+    { selector: '.hero', delay: 500 },
+    { selector: '.video-intro', delay: 700 },
+    { selector: '.case-studies', delay: 900 },
+    { selector: '.more-work', delay: 1100 },
+    { selector: '.other-work-section', delay: 1300 },
+    { selector: '.writing-section', delay: 1500 },
+    { selector: '.articles-section', delay: 1700 },
+    { selector: '.testimonials-section', delay: 1900 },
+    { selector: '.final-illustration-section', delay: 2100 },
+    { selector: '.footer-section', delay: 2300 },
   ];
 
-  elementsToHide.forEach((selector) => {
+  // Start sequential animations
+  elementsToAnimate.forEach(({ selector, delay }) => {
     const element = document.querySelector(selector);
     if (element) {
-      element.style.opacity = '0';
-      element.style.transition =
-        'opacity 0.8s ease-out, transform 0.8s ease-out';
-      element.style.transform = 'translateY(30px)';
+      // Apply initial animation class and transitions
+      element.classList.add('fade-blur-up');
+
+      // Trigger animation after delay
+      setTimeout(() => {
+        element.classList.add('animate');
+      }, delay);
     }
   });
-
-  // Simple page animations (RUNS AFTER HIDING)
-  setTimeout(() => {
-    const elements = [
-      '.hero',
-      '.video-intro',
-      '.case-studies',
-      '.more-work',
-      '.other-work-section',
-      '.writing-section',
-      '.articles-section',
-      '.testimonials-section',
-      '.final-illustration-section',
-      '.footer-section',
-    ];
-    elements.forEach((selector, index) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        setTimeout(() => {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }, index * 150);
-      }
-    });
-  }, 200);
   // Navbar scrolling effect
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', function () {
