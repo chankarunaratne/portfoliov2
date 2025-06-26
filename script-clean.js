@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
       '.writing-section',
       '.articles-section',
       '.testimonials-section',
+      '.final-illustration-section',
+      '.footer-section',
     ];
     elements.forEach((selector, index) => {
       const element = document.querySelector(selector);
@@ -81,6 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
     '.writing-section',
     '.articles-section',
     '.testimonials-section',
+    '.final-illustration-section',
+    '.footer-section',
   ];
 
   elementsToHide.forEach((selector) => {
