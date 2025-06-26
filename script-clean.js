@@ -1,5 +1,54 @@
 // Portfolio website animations and interactions
+
 document.addEventListener('DOMContentLoaded', function () {
+  // Initial state - hide elements that need animation (MUST RUN FIRST)
+  const elementsToHide = [
+    '.hero',
+    '.video-intro',
+    '.case-studies',
+    '.more-work',
+    '.other-work-section',
+    '.writing-section',
+    '.articles-section',
+    '.testimonials-section',
+    '.final-illustration-section',
+    '.footer-section',
+  ];
+
+  elementsToHide.forEach((selector) => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.style.opacity = '0';
+      element.style.transition =
+        'opacity 0.8s ease-out, transform 0.8s ease-out';
+      element.style.transform = 'translateY(30px)';
+    }
+  });
+
+  // Simple page animations (RUNS AFTER HIDING)
+  setTimeout(() => {
+    const elements = [
+      '.hero',
+      '.video-intro',
+      '.case-studies',
+      '.more-work',
+      '.other-work-section',
+      '.writing-section',
+      '.articles-section',
+      '.testimonials-section',
+      '.final-illustration-section',
+      '.footer-section',
+    ];
+    elements.forEach((selector, index) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        setTimeout(() => {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, index * 150);
+      }
+    });
+  }, 200);
   // Navbar scrolling effect
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', function () {
@@ -47,53 +96,4 @@ document.addEventListener('DOMContentLoaded', function () {
       // Placeholder for navigation to case study
     });
   });
-
-  // Initial state - hide elements that need animation (MUST RUN FIRST)
-  const elementsToHide = [
-    '.hero',
-    '.video-intro',
-    '.case-studies',
-    '.more-work',
-    '.other-work-section',
-    '.writing-section',
-    '.articles-section',
-    '.testimonials-section',
-    '.final-illustration-section',
-    '.footer-section',
-  ];
-
-  elementsToHide.forEach((selector) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.style.opacity = '0';
-      element.style.transition =
-        'opacity 0.6s ease-out, transform 0.6s ease-out';
-      element.style.transform = 'translateY(20px)';
-    }
-  });
-
-  // Simple page animations (RUNS AFTER HIDING)
-  setTimeout(() => {
-    const elements = [
-      '.hero',
-      '.video-intro',
-      '.case-studies',
-      '.more-work',
-      '.other-work-section',
-      '.writing-section',
-      '.articles-section',
-      '.testimonials-section',
-      '.final-illustration-section',
-      '.footer-section',
-    ];
-    elements.forEach((selector, index) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        setTimeout(() => {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }, index * 200);
-      }
-    });
-  }, 100);
 });

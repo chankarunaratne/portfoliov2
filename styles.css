@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #ffffff;
   color: #303030;
   line-height: 1.5;
@@ -21,6 +21,40 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+}
+
+/* Animation classes for smooth loading */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays for sequential loading */
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* Enhanced transitions for interactive elements */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Design System Variables */
@@ -309,7 +343,7 @@ body {
 }
 
 .card-cta::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -464,7 +498,6 @@ body {
   padding: 16px; /* py-4 (gap-4 implies padding around content) */
   box-sizing: border-box;
 }
-}
 
 .articles-content {
   display: flex;
@@ -485,7 +518,7 @@ body {
 }
 
 .article-title {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -494,7 +527,7 @@ body {
 }
 
 .article-read-time {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 400; /* Regular */
   font-size: 14px;
   line-height: 20px;
@@ -503,7 +536,7 @@ body {
 }
 
 .read-article-btn {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -624,7 +657,7 @@ body {
 }
 
 .testimonial-name {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -632,14 +665,14 @@ body {
 }
 
 .testimonial-role {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #666d80;
 }
 
 .testimonial-quote {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: #666d80;
@@ -684,7 +717,7 @@ body {
   gap: 24px;
 }
 .footer-thankyou {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -693,7 +726,7 @@ body {
   font-weight: 400;
 }
 .footer-credit {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -710,7 +743,7 @@ body {
   align-items: center;
 }
 .footer-link {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -723,7 +756,7 @@ body {
   color: #36394a;
 }
 .footer-copyright {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -922,3 +955,5 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Enhanced button animations */
