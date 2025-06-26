@@ -463,8 +463,7 @@ body {
   border: 1px solid #eceff3;
   padding: 16px; /* py-4 (gap-4 implies padding around content) */
   box-sizing: border-box;
-  opacity: 0; /* For animation */
-  animation: slideUp 1s ease-out forwards; /* For animation */
+}
 }
 
 .articles-content {

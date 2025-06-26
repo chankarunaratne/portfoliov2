@@ -48,7 +48,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Simple page animations
+  // Initial state - hide elements that need animation (MUST RUN FIRST)
+  const elementsToHide = [
+    '.hero',
+    '.video-intro',
+    '.case-studies',
+    '.more-work',
+    '.other-work-section',
+    '.writing-section',
+    '.articles-section',
+    '.testimonials-section',
+    '.final-illustration-section',
+    '.footer-section',
+  ];
+
+  elementsToHide.forEach((selector) => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.style.opacity = '0';
+      element.style.transition =
+        'opacity 0.6s ease-out, transform 0.6s ease-out';
+      element.style.transform = 'translateY(20px)';
+    }
+  });
+
+  // Simple page animations (RUNS AFTER HIDING)
   setTimeout(() => {
     const elements = [
       '.hero',
@@ -72,28 +96,4 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }, 100);
-
-  // Initial state - hide elements that need animation
-  const elementsToHide = [
-    '.hero',
-    '.video-intro',
-    '.case-studies',
-    '.more-work',
-    '.other-work-section',
-    '.writing-section',
-    '.articles-section',
-    '.testimonials-section',
-    '.final-illustration-section',
-    '.footer-section',
-  ];
-
-  elementsToHide.forEach((selector) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.style.opacity = '0';
-      element.style.transition =
-        'opacity 0.6s ease-out, transform 0.6s ease-out';
-      element.style.transform = 'translateY(20px)';
-    }
-  });
 });
