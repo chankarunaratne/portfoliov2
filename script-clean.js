@@ -57,13 +57,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Watch button (placeholder - no modal)
+  // Video interaction handlers
   const watchBtn = document.querySelector('.watch-btn');
+  const videoThumbnail = document.querySelector('.video-thumbnail');
+  
+  // Function to handle video play
+  function handleVideoPlay() {
+    // Placeholder for future video integration
+    console.log('Video play triggered - video integration coming soon');
+  }
+
+  // Watch button (desktop)
   if (watchBtn) {
     watchBtn.addEventListener('click', function (e) {
       e.preventDefault();
-      // Placeholder for future video integration
-      console.log('Watch button clicked - video integration coming soon');
+      handleVideoPlay();
+    });
+  }
+
+  // Video thumbnail click (mobile and desktop)
+  if (videoThumbnail) {
+    videoThumbnail.addEventListener('click', function () {
+      handleVideoPlay();
+    });
+
+    // Keyboard accessibility for thumbnail
+    videoThumbnail.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleVideoPlay();
+      }
     });
   }
 

@@ -943,13 +943,31 @@ body {
   }
 
   .video-thumbnail {
-    width: 80px !important;
-    height: 55px !important;
-    align-self: center !important;
+    width: 100% !important;
+    height: 180px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    background-color: #3e3e3e !important;
+    position: relative !important;
+  }
+
+  .video-thumbnail:hover {
+    background-color: #333 !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .video-thumbnail:active {
+    transform: translateY(0) !important;
   }
 
   .play-icon {
-    font-size: 16px !important;
+    font-size: 24px !important;
+    color: white !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .video-info {
@@ -978,13 +996,7 @@ body {
   }
 
   .watch-btn {
-    width: 100% !important;
-    padding: 12px 0 !important;
-    font-size: 16px !important;
-    line-height: 24px !important;
-    text-align: center;
-    border-radius: 8px !important;
-    align-self: stretch !important;
+    display: none !important;
   }
 
   /* Mobile text adjustments */
