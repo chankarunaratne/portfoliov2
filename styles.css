@@ -1176,8 +1176,7 @@ body {
   }
 
   .watch-btn {
-    font-size: 14px !important;
-    padding: 8px 16px !important;
+    display: none !important;
   }
 
   /* Mobile text adjustments */
