@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #ffffff;
   color: #303030;
   line-height: 1.5;
@@ -374,8 +374,6 @@ body {
   background-color: #f8f9fa;
 }
 
-
-
 /* Video Modal Styles */
 .video-modal {
   position: fixed;
@@ -538,7 +536,7 @@ body {
 }
 
 .card-cta::after {
-  content: '';
+  content: "";
   display: inline-block;
   width: 6px;
   height: 6px;
@@ -713,7 +711,7 @@ body {
 }
 
 .article-title {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -722,7 +720,7 @@ body {
 }
 
 .article-read-time {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 400; /* Regular */
   font-size: 14px;
   line-height: 20px;
@@ -731,7 +729,7 @@ body {
 }
 
 .read-article-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -852,7 +850,7 @@ body {
 }
 
 .testimonial-name {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -860,14 +858,14 @@ body {
 }
 
 .testimonial-role {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #666d80;
 }
 
 .testimonial-quote {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: #666d80;
@@ -912,7 +910,7 @@ body {
   gap: 24px;
 }
 .footer-thankyou {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -921,7 +919,7 @@ body {
   font-weight: 400;
 }
 .footer-credit {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -938,7 +936,7 @@ body {
   align-items: center;
 }
 .footer-link {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -951,7 +949,7 @@ body {
   color: #36394a;
 }
 .footer-copyright {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   color: #666d80;
   text-transform: uppercase;
@@ -1102,8 +1100,6 @@ body {
     overflow: hidden !important;
   }
 
-
-
   .video-thumbnail:hover {
     transform: translateY(-1px) !important;
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3) !important;
@@ -1180,7 +1176,8 @@ body {
   }
 
   .watch-btn {
-    display: none !important;
+    font-size: 14px !important;
+    padding: 8px 16px !important;
   }
 
   /* Mobile text adjustments */
