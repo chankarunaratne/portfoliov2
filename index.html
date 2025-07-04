@@ -60,6 +60,7 @@
       <section class="video-intro">
         <div class="video-content">
           <div class="video-thumbnail" role="button" tabindex="0">
+            <img src="https://cdn.loom.com/sessions/thumbnails/2ea578cee6d74116b211a16accde633d-1735647982624-with-play.gif" alt="Video intro thumbnail" class="video-thumbnail-img" />
             <div class="play-icon">▶</div>
           </div>
           <div class="video-info">
@@ -73,6 +74,17 @@
           </div>
         </div>
       </section>
+
+      <!-- Video Modal -->
+      <div id="video-modal" class="video-modal" style="display: none;">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+          <button class="video-modal-close" aria-label="Close video">&times;</button>
+          <div class="video-modal-container">
+            <div id="loom-embed-container"></div>
+          </div>
+        </div>
+      </div>
 
       <!-- Case Studies Section -->
       <section class="case-studies">

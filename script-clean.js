@@ -60,11 +60,46 @@ document.addEventListener('DOMContentLoaded', function () {
   // Video interaction handlers
   const watchBtn = document.querySelector('.watch-btn');
   const videoThumbnail = document.querySelector('.video-thumbnail');
+  const videoModal = document.getElementById('video-modal');
+  const videoModalClose = document.querySelector('.video-modal-close');
+  const videoModalOverlay = document.querySelector('.video-modal-overlay');
+  const loomEmbedContainer = document.getElementById('loom-embed-container');
+  
+  // Loom embed code
+  const loomEmbedHTML = `<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/2ea578cee6d74116b211a16accde633d?sid=ff0ac7cc-1a10-474a-877e-26d861031448" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>`;
+  
+  // Function to open video modal
+  function openVideoModal() {
+    // Add the Loom embed to the container
+    loomEmbedContainer.innerHTML = loomEmbedHTML;
+    
+    // Show the modal
+    videoModal.style.display = 'flex';
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus on the close button for accessibility
+    setTimeout(() => {
+      videoModalClose.focus();
+    }, 300);
+  }
+  
+  // Function to close video modal
+  function closeVideoModal() {
+    // Hide the modal
+    videoModal.style.display = 'none';
+    
+    // Remove the embed to stop the video
+    loomEmbedContainer.innerHTML = '';
+    
+    // Restore body scrolling
+    document.body.style.overflow = 'auto';
+  }
   
   // Function to handle video play
   function handleVideoPlay() {
-    // Placeholder for future video integration
-    console.log('Video play triggered - video integration coming soon');
+    openVideoModal();
   }
 
   // Watch button (desktop)
@@ -89,6 +124,22 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // Modal close event listeners
+  if (videoModalClose) {
+    videoModalClose.addEventListener('click', closeVideoModal);
+  }
+
+  if (videoModalOverlay) {
+    videoModalOverlay.addEventListener('click', closeVideoModal);
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+      closeVideoModal();
+    }
+  });
 
   // Case study card click handlers
   const caseCards = document.querySelectorAll('.case-card');
