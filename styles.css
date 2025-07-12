@@ -201,6 +201,7 @@ body {
   max-width: 90%;
   background-color: var(--bg-normal);
   border-radius: 32px;
+  border: 1px solid #eceff3;
 }
 
 .hero-content {
@@ -452,6 +453,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 36px;
+  border: 1px solid #eceff3;
 }
 
 .card-info {
