@@ -81,34 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize mobile GIF thumbnail if on mobile
   function initializeMobileVideoThumbnail() {
-    if (isMobileDevice() && videoThumbnail) {
-      // Create Loom GIF thumbnail for mobile that triggers modal
-      const loomGifHTML = `
-        <div style="display: block; width: 100%; height: 100%; position: relative; cursor: pointer;">
-          <img 
-            src="https://cdn.loom.com/sessions/thumbnails/${loomVideoId}-with-play.gif" 
-            alt="Chan's Video Intro - Click to watch"
-            style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"
-            loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <div style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: inherit; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
-            <div style="color: white; font-size: 32px; background: rgba(0, 0, 0, 0.4); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">▶</div>
-            <div style="color: white; font-size: 16px; font-weight: 600; text-align: center;">👋 Chan's Video Intro</div>
-            <div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; text-align: center;">Watch me introduce myself</div>
-          </div>
-          <div style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 500;">
-            Video Intro
-          </div>
-        </div>
-      `;
-
-      // Replace the thumbnail content with GIF for mobile
-      videoThumbnail.innerHTML = loomGifHTML;
-
-      return true; // Mobile thumbnail initialized
-    }
-    return false; // Not mobile, use desktop modal
+    // No longer replacing thumbnail content on mobile
+    // Let CSS handle the custom video-icon.png background
+    return isMobileDevice(); // Just return if it's mobile for other logic
   }
 
   // Function to open video modal
