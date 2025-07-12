@@ -172,6 +172,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Make entire video-intro section clickable on mobile
+  const videoIntroSection = document.querySelector(".video-intro");
+  if (videoIntroSection && isMobileDevice()) {
+    videoIntroSection.addEventListener("click", function (e) {
+      // Only trigger if the click wasn't on the thumbnail (to avoid double-triggering)
+      if (!videoThumbnail || !videoThumbnail.contains(e.target)) {
+        handleVideoPlay();
+      }
+    });
+
+    // Add cursor pointer style for mobile
+    videoIntroSection.style.cursor = "pointer";
+
+    // Keyboard accessibility for the entire section on mobile
+    videoIntroSection.setAttribute("tabindex", "0");
+    videoIntroSection.setAttribute("role", "button");
+    videoIntroSection.setAttribute(
+      "aria-label",
+      "Play Chan's video introduction"
+    );
+
+    videoIntroSection.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleVideoPlay();
+      }
+    });
+  }
+
   // Modal close event listeners
   if (videoModalClose) {
     videoModalClose.addEventListener("click", closeVideoModal);
