@@ -221,44 +221,48 @@ body {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
   right: 0;
+  width: 362px;
   background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 0 0 12px 12px;
-  border: 1px solid #eceff3;
-  border-top: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  opacity: 0.97;
+  box-shadow: 0px 0px 0px 1px rgba(18, 55, 105, 0.08),
+    0px 1px 2px 0px rgba(29, 79, 129, 0.04),
+    0px 16px 32px -12px rgba(7, 32, 69, 0.25);
+  margin-top: 8px;
 }
 
 .mobile-nav-links {
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  gap: 12px;
+  padding: 4px;
+  gap: 0;
 }
 
 .mobile-nav-link {
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   text-decoration: none;
-  color: var(--text-normal);
+  color: #36394a;
   font-weight: 400;
   padding: 8px 12px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mobile-nav-link.active {
-  color: var(--text-muted);
+  color: #36394a;
   font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
 }
 
 .mobile-nav-link:hover {
-  color: var(--text-muted);
-  background-color: rgba(0, 0, 0, 0.05);
+  color: #36394a;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 /* Hero Section */
