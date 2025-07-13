@@ -57,6 +57,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Mobile menu functionality
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+  const mobileMenuOverlay = document.querySelector(".mobile-menu-overlay");
+  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+  if (mobileMenuToggle && mobileMenuOverlay) {
+    // Toggle mobile menu
+    mobileMenuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isActive = mobileMenuToggle.classList.contains("active");
+
+      if (isActive) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (e) {
+      if (
+        mobileMenuOverlay.classList.contains("active") &&
+        !mobileMenuOverlay.contains(e.target) &&
+        !mobileMenuToggle.contains(e.target)
+      ) {
+        closeMobileMenu();
+      }
+    });
+
+    // Handle mobile nav link clicks
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Remove active class from all mobile links
+        mobileNavLinks.forEach((l) => l.classList.remove("active"));
+        // Remove active class from desktop links too
+        navLinks.forEach((l) => l.classList.remove("active"));
+
+        // Add active class to clicked mobile link
+        this.classList.add("active");
+
+        // Add active class to corresponding desktop link
+        const linkText = this.textContent;
+        const correspondingDesktopLink = Array.from(navLinks).find(
+          (link) => link.textContent === linkText
+        );
+        if (correspondingDesktopLink) {
+          correspondingDesktopLink.classList.add("active");
+        }
+
+        // Close mobile menu after selection
+        closeMobileMenu();
+      });
+    });
+
+    function openMobileMenu() {
+      mobileMenuToggle.classList.add("active");
+      mobileMenuOverlay.classList.add("active");
+    }
+
+    function closeMobileMenu() {
+      mobileMenuToggle.classList.remove("active");
+      mobileMenuOverlay.classList.remove("active");
+    }
+  }
+
   // Video interaction handlers
   const watchBtn = document.querySelector(".watch-btn");
   const videoThumbnail = document.querySelector(".video-thumbnail");
