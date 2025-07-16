@@ -4,25 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
   // Dark Mode Toggle Functionality
   const themeToggle = document.getElementById("theme-toggle");
   const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
-  
+
   // Check for saved theme preference or default to light mode
   const currentTheme = localStorage.getItem("theme") || "light";
   document.documentElement.setAttribute("data-theme", currentTheme);
-  
+
   // Function to toggle theme
   function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute("data-theme");
     const newTheme = currentTheme === "dark" ? "light" : "dark";
-    
+
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
   }
-  
+
   // Add event listeners to theme toggles
   if (themeToggle) {
     themeToggle.addEventListener("click", toggleTheme);
   }
-  
+
   if (mobileThemeToggle) {
     mobileThemeToggle.addEventListener("click", toggleTheme);
   }
@@ -299,13 +299,86 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 250);
   });
 
+  // Showcase Modal Functionality
+  const showcaseModal = document.getElementById("showcase-modal");
+  const showcaseModalOverlay = document.querySelector(
+    ".showcase-modal-overlay"
+  );
+  const showcaseModalClose = document.querySelector(".showcase-modal-close");
+
+  // Showcase data for different projects
+  const showcaseData = {
+    docswell: {
+      company: "Docswell",
+      role: "Product Designer",
+      title:
+        "Taking Docswell's MVP to production as the sole designer of the team",
+      description:
+        "Overhauled both patient and practitioner portals from the ground up and prepared them for production launch.",
+    },
+    jiffy: {
+      company: "Jiffy",
+      role: "Founding Designer",
+      title: "Building Jiffy's design foundation from the ground up",
+      description:
+        "Created the complete design system and user experience for a revolutionary delivery platform, establishing the visual and interaction patterns that would scale with the product.",
+    },
+    hiomi: {
+      company: "Hiomi",
+      role: "Product Designer",
+      title: "Designing user-centered solutions for healthcare innovation",
+      description:
+        "Led the design process for a healthcare technology platform, focusing on intuitive user interfaces and seamless patient experiences.",
+    },
+  };
+
+  // Function to open showcase modal with specific content
+  function openShowcaseModal(showcaseType) {
+    const data = showcaseData[showcaseType];
+    if (!data) return;
+
+    // Update modal content
+    document.getElementById("showcase-company-name").textContent = data.company;
+    document.getElementById("showcase-role").textContent = data.role;
+    document.getElementById("showcase-title").textContent = data.title;
+    document.getElementById("showcase-description").textContent =
+      data.description;
+
+    // Show modal
+    showcaseModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  // Function to close showcase modal
+  function closeShowcaseModal() {
+    showcaseModal.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+
   // Case study card click handlers
   const caseCards = document.querySelectorAll(".case-card");
   caseCards.forEach((card) => {
     card.addEventListener("click", function () {
-      const title = card.querySelector(".card-title").textContent;
-      console.log(`Case study clicked: ${title}`);
-      // Placeholder for navigation to case study
+      const showcaseType = card.getAttribute("data-showcase");
+      if (showcaseType) {
+        openShowcaseModal(showcaseType);
+      }
     });
+  });
+
+  // Close showcase modal event listeners
+  if (showcaseModalClose) {
+    showcaseModalClose.addEventListener("click", closeShowcaseModal);
+  }
+
+  if (showcaseModalOverlay) {
+    showcaseModalOverlay.addEventListener("click", closeShowcaseModal);
+  }
+
+  // Close showcase modal with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && showcaseModal.style.display === "flex") {
+      closeShowcaseModal();
+    }
   });
 });
