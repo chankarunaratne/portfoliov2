@@ -1,6 +1,32 @@
 // Portfolio website animations and interactions
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Dark Mode Toggle Functionality
+  const themeToggle = document.getElementById("theme-toggle");
+  const mobileThemeToggle = document.getElementById("mobile-theme-toggle");
+  
+  // Check for saved theme preference or default to light mode
+  const currentTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  
+  // Function to toggle theme
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+  
+  // Add event listeners to theme toggles
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+  
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener("click", toggleTheme);
+  }
+
   // Sequential spring blur animation system
   const elementsToAnimate = [
     { selector: ".navbar", delay: 300 },
@@ -33,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
   window.addEventListener("scroll", function () {
     if (window.scrollY > 10) {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.85)";
+      navbar.style.backgroundColor = "var(--navbar-bg-scrolled)";
       navbar.style.backdropFilter = "blur(12px)";
       navbar.style.webkitBackdropFilter = "blur(12px)";
     } else {
-      navbar.style.backgroundColor = "rgba(255, 255, 255, 0.80)";
+      navbar.style.backgroundColor = "var(--navbar-bg)";
       navbar.style.backdropFilter = "blur(8px)";
       navbar.style.webkitBackdropFilter = "blur(8px)";
     }

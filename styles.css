@@ -12,8 +12,8 @@ html {
 
 body {
   font-family: "Inter", sans-serif;
-  background-color: #ffffff;
-  color: #303030;
+  background-color: var(--bg-white);
+  color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,6 +114,165 @@ body {
   --bg-white: #ffffff;
   --gradient-from: #949494;
   --gradient-to: #b3b3b399;
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --navbar-bg-scrolled: rgba(255, 255, 255, 0.85);
+  --hero-bg: #f6f8fa;
+  --hero-border: #eceff3;
+  --video-intro-bg: rgba(255, 255, 255, 0.95);
+  --video-intro-border: #eceff3;
+  --modal-overlay: rgba(0, 0, 0, 0.8);
+  --card-border: #eceff3;
+  --card-role-text: rgba(0, 0, 0, 0.6);
+  --article-title: #36394a;
+  --article-button-bg: #ffffff;
+  --article-button-border: rgba(18, 55, 105, 0.08);
+  --article-button-shadow: rgba(164, 172, 185, 0.24);
+  --article-button-hover: #f8f9fa;
+  --article-divider: #eceff3;
+  --testimonial-bg: #fff;
+  --testimonial-name: #000000;
+  --testimonial-border: #eceff3;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --text-primary: #e4e6ea;
+  --text-muted: #b0b3b8;
+  --text-subdued: #8a8d93;
+  --text-normal: #9ca3af;
+  --bg-normal: #242526;
+  --bg-pressed: #3a3b3c;
+  --bg-white: #18191a;
+  --gradient-from: #c0c0c0;
+  --gradient-to: #888888cc;
+  --navbar-bg: rgba(24, 25, 26, 0.8);
+  --navbar-bg-scrolled: rgba(24, 25, 26, 0.85);
+  --hero-bg: #242526;
+  --hero-border: #3a3b3c;
+  --video-intro-bg: rgba(36, 37, 38, 0.95);
+  --video-intro-border: #3a3b3c;
+  --modal-overlay: rgba(0, 0, 0, 0.9);
+  --card-border: #3a3b3c;
+  --card-role-text: rgba(255, 255, 255, 0.6);
+  --article-title: #b0b3b8;
+  --article-button-bg: #3a3b3c;
+  --article-button-border: rgba(255, 255, 255, 0.08);
+  --article-button-shadow: rgba(0, 0, 0, 0.24);
+  --article-button-hover: #4e4f50;
+  --article-divider: #3a3b3c;
+  --testimonial-bg: #242526;
+  --testimonial-name: #e4e6ea;
+  --testimonial-border: #3a3b3c;
+}
+
+/* Theme Toggle Styling */
+.theme-toggle,
+.mobile-theme-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle:hover,
+.mobile-theme-toggle:hover {
+  background-color: var(--bg-pressed);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sun-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+.moon-icon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.5);
+}
+
+[data-theme="dark"] .sun-icon {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .moon-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+}
+
+/* Mobile Theme Toggle Specific Styling */
+.mobile-theme-toggle {
+  width: 100%;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+}
+
+.mobile-theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .mobile-theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-theme-toggle .theme-icon {
+  position: static;
+  transform: none;
+  flex-shrink: 0;
+}
+
+.mobile-theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.mobile-theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+[data-theme="dark"] .mobile-theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .mobile-theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.mobile-theme-label {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-normal);
+  font-weight: 400;
+}
+
+/* Dark Mode Transition */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Layout */
@@ -133,7 +292,7 @@ body {
   right: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
@@ -223,7 +382,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   width: 354px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 10px;
@@ -278,9 +437,9 @@ body {
   margin: 0 auto 32px;
   width: 720px;
   max-width: 90%;
-  background-color: var(--bg-normal);
+  background-color: var(--hero-bg);
   border-radius: 32px;
-  border: 1px solid #eceff3;
+  border: 1px solid var(--hero-border);
 }
 
 .hero-content {
@@ -336,9 +495,9 @@ body {
   margin: 0 auto 32px;
   width: 720px;
   max-width: 90%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--video-intro-bg);
   border-radius: 16px;
-  border: 1px solid #eceff3;
+  border: 1px solid var(--video-intro-border);
 }
 
 .video-content {
@@ -435,7 +594,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--modal-overlay);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -532,7 +691,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 36px;
-  border: 1px solid #eceff3;
+  border: 1px solid var(--card-border);
 }
 
 .card-info {
@@ -543,7 +702,7 @@ body {
 
 .card-role {
   font-size: 16px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--card-role-text);
   font-weight: 400;
 }
 
@@ -757,7 +916,7 @@ body {
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
-  color: #36394a; /* Text/Muted [600] */
+  color: var(--article-title);
   margin: 0;
 }
 
@@ -775,10 +934,10 @@ body {
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
-  color: #36394a; /* Text/Muted [600] */
-  background-color: #ffffff; /* Form/Button/Secondary/Normal */
-  border: 1px solid rgba(18, 55, 105, 0.08); /* shadow part */
-  box-shadow: 0px 1px 2px 0px rgba(164, 172, 185, 0.24);
+  color: var(--article-title);
+  background-color: var(--article-button-bg);
+  border: 1px solid var(--article-button-border);
+  box-shadow: 0px 1px 2px 0px var(--article-button-shadow);
   border-radius: 6px; /* rounded-md */
   padding: 4px 14px; /* py-1 px-3.5 */
   cursor: pointer;
@@ -787,13 +946,13 @@ body {
 }
 
 .read-article-btn:hover {
-  background-color: #f8f9fa; /* Added hover effect */
+  background-color: var(--article-button-hover);
 }
 
 .article-divider {
   border: none;
   height: 1px;
-  background-color: #eceff3; /* Matches border color of the container */
+  background-color: var(--article-divider);
   margin: 0; /* Reset margin */
 }
 
@@ -857,7 +1016,7 @@ body {
 }
 
 .testimonial-card {
-  background-color: #fff;
+  background-color: var(--testimonial-bg);
   border-radius: 15px;
   padding: 2rem;
   width: 100%;
@@ -896,7 +1055,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #000000;
+  color: var(--testimonial-name);
 }
 
 .testimonial-role {
@@ -910,8 +1069,8 @@ body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   line-height: 28px;
-  color: #666d80;
-  border: 1px solid #eceff3;
+  color: var(--text-normal);
+  border: 1px solid var(--testimonial-border);
   padding: 1.5rem;
   border-radius: 24px;
   max-width: 560px;
@@ -1115,7 +1274,7 @@ body {
     width: 100% !important;
     transform: none !important;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8) !important;
+    background-color: var(--navbar-bg) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
     margin-bottom: 0 !important; /* Remove margin to reduce top spacing */
@@ -1132,6 +1291,18 @@ body {
 
   .mobile-menu-toggle {
     display: block !important;
+  }
+
+  /* Mobile theme toggle styling */
+  .theme-toggle {
+    display: none !important;
+  }
+
+  .mobile-theme-toggle {
+    display: flex !important;
+    margin-top: 8px;
+    border-top: 1px solid var(--article-divider);
+    padding-top: 8px;
   }
 
   /* Mobile video section layout adjustments */
