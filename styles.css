@@ -52,7 +52,8 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--bg-white);
   color: var(--text-primary);
   line-height: 1.5;
@@ -353,11 +354,11 @@ body {
   font-size: 32px;
   line-height: 40px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
-  font-family: "PP Neue Montreal", "Inter", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .gradient-text {
@@ -661,7 +662,8 @@ body {
 }
 
 .showcase-company {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -670,7 +672,8 @@ body {
 }
 
 .showcase-role {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -691,7 +694,8 @@ body {
 }
 
 .showcase-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 32px;
   font-weight: 500;
   line-height: 44px;
@@ -701,7 +705,8 @@ body {
 }
 
 .showcase-description {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
@@ -710,7 +715,8 @@ body {
 }
 
 .showcase-more-content {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1063,7 +1069,8 @@ body {
 }
 
 .article-title {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -1072,7 +1079,8 @@ body {
 }
 
 .article-read-time {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400; /* Regular */
   font-size: 14px;
   line-height: 20px;
@@ -1081,7 +1089,8 @@ body {
 }
 
 .read-article-btn {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 500; /* Medium */
   font-size: 14px;
   line-height: 20px;
@@ -1202,7 +1211,8 @@ body {
 }
 
 .testimonial-name {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -1210,14 +1220,16 @@ body {
 }
 
 .testimonial-role {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #666d80;
 }
 
 .testimonial-quote {
-  font-family: "Inter", sans-serif;
+  font-family: "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 28px;
   color: var(--text-normal);
@@ -1403,9 +1415,8 @@ body {
   .hero-title {
     font-size: 28px;
     line-height: 36px;
-    font-family: "PP Neue Montreal", "DM Sans", "Inter", -apple-system,
-      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-      sans-serif;
+    font-family: "PP Neue Montreal", "Inter", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
   .hero-content {
