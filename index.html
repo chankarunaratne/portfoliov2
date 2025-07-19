@@ -29,47 +29,6 @@
             <a href="#" class="nav-link active">Home</a>
             <a href="#" class="nav-link">About Me</a>
             <a href="#" class="nav-link">My Products</a>
-            <button
-              class="theme-toggle"
-              id="theme-toggle"
-              aria-label="Toggle dark mode"
-            >
-              <svg
-                class="theme-icon sun-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M12 1v2m0 18v2m11-11h-2M4 12H2m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414m12.728 0l-1.414-1.414M6.05 6.05L4.636 4.636"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-              </svg>
-              <svg
-                class="theme-icon moon-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-              </svg>
-            </button>
           </div>
           <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <img src="assets/menu.svg" alt="Menu" width="24" height="24" />
@@ -81,48 +40,6 @@
             <a href="#" class="mobile-nav-link active">Home</a>
             <a href="#" class="mobile-nav-link">About Me</a>
             <a href="#" class="mobile-nav-link">My Products</a>
-            <button
-              class="mobile-theme-toggle"
-              id="mobile-theme-toggle"
-              aria-label="Toggle dark mode"
-            >
-              <svg
-                class="theme-icon sun-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="5"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-                <path
-                  d="M12 1v2m0 18v2m11-11h-2M4 12H2m15.364-6.364l-1.414 1.414M6.05 17.95l-1.414 1.414m12.728 0l-1.414-1.414M6.05 6.05L4.636 4.636"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-              </svg>
-              <svg
-                class="theme-icon moon-icon"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-              </svg>
-              <span class="mobile-theme-label">Dark mode</span>
-            </button>
           </div>
         </div>
       </nav>
@@ -342,19 +259,18 @@
       </section>
 
       <!-- Image Popup Modal -->
-      <div id="image-popup-modal" class="image-popup-modal" style="display: none">
+      <div
+        id="image-popup-modal"
+        class="image-popup-modal"
+        style="display: none"
+      >
         <div class="image-popup-overlay"></div>
         <div class="image-popup-content">
           <button class="image-popup-close" aria-label="Close image popup">
             &times;
           </button>
           <div class="image-popup-container">
-            <img
-              id="popup-image"
-              src=""
-              alt=""
-              class="popup-image"
-            />
+            <img id="popup-image" src="" alt="" class="popup-image" />
           </div>
         </div>
       </div>
