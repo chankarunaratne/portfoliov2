@@ -381,4 +381,152 @@ document.addEventListener("DOMContentLoaded", function () {
       closeShowcaseModal();
     }
   });
+
+  // Image Popup Modal Functionality
+  const imagePopupModal = document.getElementById("image-popup-modal");
+  const imagePopupOverlay = document.querySelector(".image-popup-overlay");
+  const imagePopupClose = document.querySelector(".image-popup-close");
+  const popupImage = document.getElementById("popup-image");
+
+  // Function to open image popup modal
+  function openImagePopup(imageSrc, imageAlt) {
+    popupImage.src = imageSrc;
+    popupImage.alt = imageAlt;
+    imagePopupModal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+    
+    // Reset zoom state
+    popupImage.classList.remove("zoomed");
+    popupImage.style.transform = "scale(1)";
+  }
+
+  // Function to close image popup modal
+  function closeImagePopup() {
+    imagePopupModal.style.display = "none";
+    document.body.style.overflow = "auto";
+    
+    // Reset zoom state
+    popupImage.classList.remove("zoomed");
+    popupImage.style.transform = "scale(1)";
+  }
+
+  // Image click handlers
+  const popupImages = document.querySelectorAll("[data-image-popup]");
+  popupImages.forEach((img) => {
+    img.addEventListener("click", function () {
+      const imageSrc = this.getAttribute("data-image-popup");
+      const imageAlt = this.getAttribute("alt");
+      openImagePopup(imageSrc, imageAlt);
+    });
+  });
+
+  // Close image popup event listeners
+  if (imagePopupClose) {
+    imagePopupClose.addEventListener("click", closeImagePopup);
+  }
+
+  if (imagePopupOverlay) {
+    imagePopupOverlay.addEventListener("click", closeImagePopup);
+  }
+
+  // Close image popup with Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && imagePopupModal.style.display === "flex") {
+      closeImagePopup();
+    }
+  });
+
+  // Mobile pinch-to-zoom functionality
+  let currentScale = 1;
+  let initialDistance = 0;
+  let isZoomed = false;
+
+  // Touch events for pinch-to-zoom
+  popupImage.addEventListener("touchstart", function (e) {
+    if (e.touches.length === 2) {
+      initialDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  });
+
+  popupImage.addEventListener("touchmove", function (e) {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      
+      const currentDistance = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+
+      if (initialDistance > 0) {
+        const scale = currentDistance / initialDistance;
+        const newScale = Math.max(1, Math.min(3, scale));
+        
+        currentScale = newScale;
+        this.style.transform = `scale(${newScale})`;
+        
+        if (newScale > 1) {
+          this.classList.add("zoomed");
+          isZoomed = true;
+        } else {
+          this.classList.remove("zoomed");
+          isZoomed = false;
+        }
+      }
+    }
+  });
+
+  popupImage.addEventListener("touchend", function () {
+    initialDistance = 0;
+  });
+
+  // Double tap to zoom in/out
+  let lastTap = 0;
+  popupImage.addEventListener("touchend", function (e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+    
+    if (tapLength < 500 && tapLength > 0) {
+      e.preventDefault();
+      
+      if (isZoomed) {
+        // Zoom out
+        currentScale = 1;
+        this.style.transform = "scale(1)";
+        this.classList.remove("zoomed");
+        isZoomed = false;
+      } else {
+        // Zoom in
+        currentScale = 2;
+        this.style.transform = "scale(2)";
+        this.classList.add("zoomed");
+        isZoomed = true;
+      }
+    }
+    lastTap = currentTime;
+  });
+
+  // Desktop click to zoom in/out
+  popupImage.addEventListener("click", function (e) {
+    // Only handle click zoom on desktop (not mobile)
+    if (!("ontouchstart" in window)) {
+      e.preventDefault();
+      
+      if (isZoomed) {
+        // Zoom out
+        currentScale = 1;
+        this.style.transform = "scale(1)";
+        this.classList.remove("zoomed");
+        isZoomed = false;
+      } else {
+        // Zoom in
+        currentScale = 2;
+        this.style.transform = "scale(2)";
+        this.classList.add("zoomed");
+        isZoomed = true;
+      }
+    }
+  });
 });

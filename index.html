@@ -291,6 +291,7 @@
               src="assets/bento-image.png"
               alt="More work"
               class="bento-img"
+              data-image-popup="assets/bento-image.png"
             />
           </div>
           <div class="more-work-text">
@@ -310,6 +311,7 @@
               src="assets/other-work-1.png"
               alt="Other work 1"
               class="other-work-img"
+              data-image-popup="assets/other-work-1.png"
             />
           </div>
           <div class="other-work-item">
@@ -317,6 +319,7 @@
               src="assets/other-work-2.png"
               alt="Other work 2"
               class="other-work-img"
+              data-image-popup="assets/other-work-2.png"
             />
           </div>
           <div class="other-work-item">
@@ -324,6 +327,7 @@
               src="assets/other-work-3.png"
               alt="Other work 3"
               class="other-work-img"
+              data-image-popup="assets/other-work-3.png"
             />
           </div>
           <div class="other-work-item">
@@ -331,10 +335,29 @@
               src="assets/other-work-4.png"
               alt="Other work 4"
               class="other-work-img"
+              data-image-popup="assets/other-work-4.png"
             />
           </div>
         </div>
       </section>
+
+      <!-- Image Popup Modal -->
+      <div id="image-popup-modal" class="image-popup-modal" style="display: none">
+        <div class="image-popup-overlay"></div>
+        <div class="image-popup-content">
+          <button class="image-popup-close" aria-label="Close image popup">
+            &times;
+          </button>
+          <div class="image-popup-container">
+            <img
+              id="popup-image"
+              src=""
+              alt=""
+              class="popup-image"
+            />
+          </div>
+        </div>
+      </div>
 
       <!-- Writing Section -->
       <section class="writing-section">
