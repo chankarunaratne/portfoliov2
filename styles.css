@@ -936,10 +936,20 @@ body {
   border-radius: 16px;
   cursor: zoom-in;
   transition: transform 0.3s ease;
+  /* Prevent browser from interfering with zoom */
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Ensure transform origin is centered for better zoom experience */
+  transform-origin: center center;
 }
 
 .popup-image.zoomed {
   cursor: zoom-out;
+  /* Remove transition when zoomed to prevent interference with pinch gestures */
+  transition: none;
 }
 
 /* Make images clickable */

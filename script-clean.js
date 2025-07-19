@@ -394,20 +394,28 @@ document.addEventListener("DOMContentLoaded", function () {
     popupImage.alt = imageAlt;
     imagePopupModal.style.display = "flex";
     document.body.style.overflow = "hidden";
-    
+
     // Reset zoom state
     popupImage.classList.remove("zoomed");
     popupImage.style.transform = "scale(1)";
+    currentScale = 1;
+    isZoomed = false;
+    isPinching = false;
+    initialDistance = 0;
   }
 
   // Function to close image popup modal
   function closeImagePopup() {
     imagePopupModal.style.display = "none";
     document.body.style.overflow = "auto";
-    
+
     // Reset zoom state
     popupImage.classList.remove("zoomed");
     popupImage.style.transform = "scale(1)";
+    currentScale = 1;
+    isZoomed = false;
+    isPinching = false;
+    initialDistance = 0;
   }
 
   // Image click handlers
@@ -440,21 +448,27 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentScale = 1;
   let initialDistance = 0;
   let isZoomed = false;
+  let isPinching = false;
+  let lastTap = 0;
 
   // Touch events for pinch-to-zoom
   popupImage.addEventListener("touchstart", function (e) {
     if (e.touches.length === 2) {
+      isPinching = true;
       initialDistance = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
       );
+    } else if (e.touches.length === 1) {
+      isPinching = false;
     }
   });
 
   popupImage.addEventListener("touchmove", function (e) {
     if (e.touches.length === 2) {
       e.preventDefault();
-      
+      isPinching = true;
+
       const currentDistance = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
@@ -463,10 +477,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (initialDistance > 0) {
         const scale = currentDistance / initialDistance;
         const newScale = Math.max(1, Math.min(3, scale));
-        
+
         currentScale = newScale;
         this.style.transform = `scale(${newScale})`;
-        
+
         if (newScale > 1) {
           this.classList.add("zoomed");
           isZoomed = true;
@@ -478,34 +492,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  popupImage.addEventListener("touchend", function () {
-    initialDistance = 0;
-  });
-
-  // Double tap to zoom in/out
-  let lastTap = 0;
   popupImage.addEventListener("touchend", function (e) {
-    const currentTime = new Date().getTime();
-    const tapLength = currentTime - lastTap;
-    
-    if (tapLength < 500 && tapLength > 0) {
-      e.preventDefault();
-      
-      if (isZoomed) {
-        // Zoom out
-        currentScale = 1;
-        this.style.transform = "scale(1)";
-        this.classList.remove("zoomed");
-        isZoomed = false;
-      } else {
-        // Zoom in
-        currentScale = 2;
-        this.style.transform = "scale(2)";
-        this.classList.add("zoomed");
-        isZoomed = true;
-      }
+    // Only reset initialDistance if we were pinching
+    if (isPinching) {
+      initialDistance = 0;
+      isPinching = false;
     }
-    lastTap = currentTime;
+
+    // Handle double tap for zoom in/out (only when not pinching)
+    if (!isPinching && e.touches.length === 0) {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+
+      if (tapLength < 500 && tapLength > 0) {
+        e.preventDefault();
+
+        if (isZoomed) {
+          // Zoom out
+          currentScale = 1;
+          this.style.transform = "scale(1)";
+          this.classList.remove("zoomed");
+          isZoomed = false;
+        } else {
+          // Zoom in
+          currentScale = 2;
+          this.style.transform = "scale(2)";
+          this.classList.add("zoomed");
+          isZoomed = true;
+        }
+      }
+      lastTap = currentTime;
+    }
   });
 
   // Desktop click to zoom in/out
@@ -513,7 +530,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Only handle click zoom on desktop (not mobile)
     if (!("ontouchstart" in window)) {
       e.preventDefault();
-      
+
       if (isZoomed) {
         // Zoom out
         currentScale = 1;
