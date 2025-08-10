@@ -1540,12 +1540,16 @@ body {
       0.045
     ) !important; /* ensure frosted look remains on mobile */
     border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    backdrop-filter: saturate(160%) blur(18px) !important;
-    -webkit-backdrop-filter: saturate(160%) blur(18px) !important;
+    backdrop-filter: saturate(120%) blur(22px) !important; /* match case-card */
+    -webkit-backdrop-filter: saturate(120%) blur(22px) !important;
   }
 
   .video-intro {
     margin-bottom: 32px;
+    background: rgba(255, 255, 255, 0.035) !important; /* align with cards */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: saturate(120%) blur(22px) !important; /* match case-card */
+    -webkit-backdrop-filter: saturate(120%) blur(22px) !important;
   }
 
   .case-studies {
