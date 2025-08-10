@@ -370,12 +370,12 @@ body {
   margin: 0 auto 32px;
   width: 720px;
   max-width: 90%;
-  background: rgba(255, 255, 255, 0.045); /* more transparent */
+  background: rgba(255, 255, 255, 0.035); /* softer, blends more */
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: saturate(180%) blur(22px);
-  -webkit-backdrop-filter: saturate(180%) blur(22px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(120%) blur(26px);
+  -webkit-backdrop-filter: saturate(120%) blur(26px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .hero-content {
@@ -439,9 +439,12 @@ body {
   margin: 0 auto 32px;
   width: 720px;
   max-width: 90%;
-  background-color: var(--video-intro-bg);
+  background: rgba(255, 255, 255, 0.035);
   border-radius: 16px;
-  border: 1px solid var(--video-intro-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(120%) blur(22px);
+  -webkit-backdrop-filter: saturate(120%) blur(22px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .video-content {
@@ -487,14 +490,14 @@ body {
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #ffffff;
   margin: 0;
 }
 
 .video-description {
   font-size: 14px;
   line-height: 20px;
-  color: var(--text-normal);
+  color: #ffffff;
   margin: 0;
 }
 
@@ -885,13 +888,16 @@ body {
 
 .case-card {
   width: 250px;
-  background-color: var(--bg-normal);
+  background: rgba(255, 255, 255, 0.035);
   border-radius: 24px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 36px;
-  border: 1px solid var(--card-border);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: saturate(120%) blur(22px);
+  -webkit-backdrop-filter: saturate(120%) blur(22px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .card-info {
@@ -902,14 +908,14 @@ body {
 
 .card-role {
   font-size: 16px;
-  color: var(--card-role-text);
+  color: #ffffff;
   font-weight: 400;
 }
 
 .card-logo {
   width: 48px;
   height: 48px;
-  background-color: var(--bg-pressed);
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 12px;
 }
 
@@ -923,14 +929,14 @@ body {
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #ffffff;
   margin: 0;
 }
 
 .card-cta {
   font-size: 16px;
   line-height: 24px;
-  color: var(--text-muted);
+  color: #ffffff;
   margin: 0;
   position: relative;
   display: inline-block;
