@@ -262,12 +262,12 @@ body {
 
 @media (max-width: 768px) {
   .cloud-layer {
-    height: 40vh;
+    height: 42vh; /* slightly taller cloud viewport on mobile */
   }
   .cloud-layer::before {
-    width: 600px;
-    height: 240px;
-    left: -60vw;
+    width: 640px;
+    height: 260px;
+    left: -58vw;
     opacity: 1;
     animation-duration: 55s;
   }
@@ -286,7 +286,7 @@ body {
     content: "";
     position: absolute;
     inset: 0 -5vw -40vh -5vw; /* extend blue well below the cards */
-    z-index: -1;
+    z-index: -2; /* keep mobile gradient below clouds so clouds remain visible */
     /* Mobile: larger white ramp for smoother transition */
     background: linear-gradient(
         180deg,
@@ -1521,6 +1521,15 @@ body {
   /* Reduce margins on mobile */
   .hero {
     margin-bottom: 32px;
+    background: rgba(
+      255,
+      255,
+      255,
+      0.045
+    ) !important; /* ensure frosted look remains on mobile */
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    backdrop-filter: saturate(160%) blur(18px) !important;
+    -webkit-backdrop-filter: saturate(160%) blur(18px) !important;
   }
 
   .video-intro {
