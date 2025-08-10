@@ -276,7 +276,19 @@ body {
 
 @supports (height: 100svh) {
   .home::before {
-    height: 130svh; /* Extend further past viewport on mobile too */
+    height: 130svh; /* default svh height; desktop override below */
+  }
+}
+
+/* Desktop-only: extend gradient further below the viewport */
+@media (min-width: 769px) {
+  .home::before {
+    height: 140vh; /* fallback */
+    height: 140svh; /* stable viewport unit where supported */
+  }
+  .intro-stack {
+    min-height: 140vh; /* ensure following content starts after gradient */
+    min-height: 140svh;
   }
 }
 
