@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   // Navbar remains static at top of page; no scroll background behavior
 
+  // Logo click handler for home navigation
+  const logoLink = document.querySelector(".logo-link");
+  if (logoLink) {
+    logoLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      // Scroll to top of page for home navigation
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   // Navigation links functionality
   const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
