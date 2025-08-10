@@ -189,6 +189,7 @@ body {
 .intro-stack {
   position: relative;
   z-index: 0;
+  min-height: 130vh; /* Ensure content below starts after gradient end */
 }
 
 /* Top-of-page dreamy sky gradient behind hero (fills initial viewport) */
@@ -199,20 +200,24 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 100vh; /* Desktop fallback */
+  height: 130vh; /* Extend further past viewport */
   pointer-events: none;
   z-index: -2; /* Render behind clouds and all content */
-  background: radial-gradient(
+  /* Larger white ramp at the bottom for a smoother transition */
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 85%,
+      rgba(255, 255, 255, 0.7) 95%,
+      #ffffff 100%
+    ),
+    radial-gradient(
       313% 100% at 50% 0%,
       rgb(58, 128, 196) 0%,
-      /* lighter top blue */ rgb(80, 150, 210) 52.6126%,
-      rgb(120, 180, 225) 67.3874%,
+      rgb(80, 150, 210) 60%,
+      rgb(120, 180, 225) 88%,
+      rgb(160, 200, 235) 98%,
       rgb(255, 255, 255) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.12) 0%,
-      /* gentle top lightening */ rgba(255, 255, 255, 0) 45%
     );
 }
 
@@ -271,7 +276,7 @@ body {
 
 @supports (height: 100svh) {
   .home::before {
-    height: 100svh; /* Stable viewport height on mobile */
+    height: 130svh; /* Extend further past viewport on mobile too */
   }
 }
 
@@ -280,21 +285,28 @@ body {
   .intro-stack::after {
     content: "";
     position: absolute;
-    inset: 0 -5vw 0 -5vw; /* bleed slightly for edge safety */
+    inset: 0 -5vw -40vh -5vw; /* extend blue well below the cards */
     z-index: -1;
-    background: radial-gradient(
-        260% 90% at 50% -10%,
-        rgba(58, 128, 196, 0.9) 0%,
-        rgba(80, 150, 210, 0.85) 45%,
-        rgba(120, 180, 225, 0.8) 65%,
-        rgba(255, 255, 255, 1) 100%
-      ),
-      linear-gradient(
+    /* Mobile: larger white ramp for smoother transition */
+    background: linear-gradient(
         180deg,
-        rgba(255, 255, 255, 0.1) 0%,
-        rgba(255, 255, 255, 0) 50%
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 85%,
+        rgba(255, 255, 255, 0.7) 95%,
+        #ffffff 100%
+      ),
+      radial-gradient(
+        320% 95% at 50% -10%,
+        rgba(58, 128, 196, 0.95) 0%,
+        rgba(80, 150, 210, 0.92) 55%,
+        rgba(120, 180, 225, 0.9) 85%,
+        rgba(160, 200, 235, 0.9) 98%,
+        #ffffff 100%
       );
     pointer-events: none;
+  }
+  .intro-stack {
+    min-height: 130svh; /* Match mobile gradient height */
   }
 }
 
