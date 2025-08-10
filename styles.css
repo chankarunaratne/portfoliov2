@@ -239,7 +239,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.35;
+  opacity: 1;
   filter: blur(0.6px) saturate(110%);
   animation: single-cloud-pan 60s linear infinite;
 }
@@ -247,22 +247,13 @@ body {
 @keyframes single-cloud-pan {
   0% {
     transform: translateX(0);
-    opacity: 0;
-  }
-  5% {
-    opacity: 0.32;
-  }
-  50% {
-    opacity: 0.35;
-  }
-  95% {
-    opacity: 0.32;
   }
   100% {
     transform: translateX(140vw);
-    opacity: 0;
   }
 }
+
+/* (cloud-2 removed) */
 
 @media (max-width: 768px) {
   .cloud-layer {
@@ -272,9 +263,10 @@ body {
     width: 600px;
     height: 240px;
     left: -60vw;
-    opacity: 0.28;
+    opacity: 1;
     animation-duration: 55s;
   }
+  /* cloud-2 mobile variant removed */
 }
 
 @supports (height: 100svh) {
