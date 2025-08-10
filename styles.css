@@ -201,7 +201,7 @@ body {
   width: 100%;
   height: 100vh; /* Desktop fallback */
   pointer-events: none;
-  z-index: -1; /* Render behind content */
+  z-index: -2; /* Render behind clouds and all content */
   background: radial-gradient(
       313% 100% at 50% 0%,
       rgb(58, 128, 196) 0%,
@@ -214,6 +214,67 @@ body {
       rgba(255, 255, 255, 0.12) 0%,
       /* gentle top lightening */ rgba(255, 255, 255, 0) 45%
     );
+}
+
+/* Animated cloud layer (behind content, above sky gradient) */
+.cloud-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 55vh;
+  pointer-events: none;
+  z-index: -1; /* below content, above ::before sky */
+  overflow: visible;
+}
+
+.cloud-layer::before {
+  content: "";
+  position: absolute;
+  top: 6vh;
+  left: -40vw; /* start off-screen */
+  width: 900px;
+  height: 360px;
+  background-image: url("assets/cloud.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.35;
+  filter: blur(0.6px) saturate(110%);
+  animation: single-cloud-pan 45s linear infinite;
+}
+
+@keyframes single-cloud-pan {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  95% {
+    opacity: 0.32;
+  }
+  100% {
+    transform: translateX(140vw);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .cloud-layer {
+    height: 40vh;
+  }
+  .cloud-layer::before {
+    width: 600px;
+    height: 240px;
+    left: -60vw;
+    opacity: 0.28;
+    animation-duration: 55s;
+  }
 }
 
 @supports (height: 100svh) {
