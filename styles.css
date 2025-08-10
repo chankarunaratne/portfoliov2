@@ -596,23 +596,39 @@ body {
 }
 
 .watch-btn {
-  background: #fefefe;
-  border: 1px solid rgba(18, 55, 105, 0.08);
-  border-radius: 6px;
-  padding: 4px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 6px 16px;
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #ffffff;
   cursor: pointer;
-  box-shadow: 0px 1px 2px 0px rgba(164, 172, 185, 0.24);
-  transition: all 0.2s ease;
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.1s ease;
   position: relative;
   z-index: 10;
 }
 
 .watch-btn:hover {
-  background-color: #f8f9fa;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.watch-btn:active {
+  transform: translateY(0.5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.watch-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35),
+    0 8px 22px rgba(0, 0, 0, 0.16);
 }
 
 /* Video Modal Styles */
