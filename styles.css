@@ -223,7 +223,7 @@ body {
 
 /* Animated cloud layer (behind content, above sky gradient) */
 .cloud-layer {
-  position: fixed;
+  position: absolute; /* keep cloud in hero region; don't stick to viewport */
   top: 0;
   left: 0;
   width: 100vw;
