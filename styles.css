@@ -1672,7 +1672,7 @@ body {
     font-size: 16px !important;
     line-height: 22px !important;
     font-weight: 500 !important;
-    color: var(--text-muted) !important;
+    color: #ffffff !important;
     margin: 0 !important;
   }
 
@@ -1681,7 +1681,7 @@ body {
   }
 
   .watch-btn {
-    display: none !important;
+    display: none !important; /* hide button on mobile per spec */
   }
 
   /* Mobile text adjustments */
