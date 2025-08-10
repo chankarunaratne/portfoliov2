@@ -241,7 +241,7 @@ body {
   background-position: center;
   opacity: 0.35;
   filter: blur(0.6px) saturate(110%);
-  animation: single-cloud-pan 45s linear infinite;
+  animation: single-cloud-pan 60s linear infinite;
 }
 
 @keyframes single-cloud-pan {
