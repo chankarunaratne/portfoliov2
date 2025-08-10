@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, delay);
     }
   });
-  // Navbar is transparent over gradient; no dynamic background needed
+  // Navbar remains static at top of page; no scroll background behavior
 
   // Navigation links functionality
   const navLinks = document.querySelectorAll(".nav-link");
