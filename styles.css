@@ -267,7 +267,7 @@ body {
   .cloud-layer::before {
     width: 640px;
     height: 260px;
-    left: -58vw;
+    left: -60vw;
     opacity: 1;
     animation-duration: 55s;
   }
@@ -289,6 +289,16 @@ body {
   .intro-stack {
     min-height: 140vh; /* ensure following content starts after gradient */
     min-height: 140svh;
+  }
+  /* Desktop: keep cloud fixed at a specific spot (no travel) */
+  .cloud-layer::before {
+    top: 6vh; /* revert to animated path start */
+    left: -40vw;
+    animation: single-cloud-pan 60s linear infinite; /* resume travel */
+  }
+  /* Desktop cloud-2: fixed near right-bottom, slightly crossing last case card */
+  .cloud-layer::after {
+    content: none; /* remove cloud-2 */
   }
 }
 
