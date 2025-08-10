@@ -153,25 +153,25 @@ body {
   --text-normal: #666d80;
   --bg-normal: #f6f8fa;
   --bg-pressed: #dfe1e7;
-  --bg-white: #ffffff;
+  --bg-white: #fefefe;
   --gradient-from: #949494;
   --gradient-to: #b3b3b399;
-  --navbar-bg: rgba(255, 255, 255, 0.8);
-  --navbar-bg-scrolled: rgba(255, 255, 255, 0.85);
+  --navbar-bg: rgba(254, 254, 254, 0.8);
+  --navbar-bg-scrolled: rgba(254, 254, 254, 0.85);
   --hero-bg: #f6f8fa;
   --hero-border: #eceff3;
-  --video-intro-bg: rgba(255, 255, 255, 0.95);
+  --video-intro-bg: rgba(254, 254, 254, 0.95);
   --video-intro-border: #eceff3;
   --modal-overlay: rgba(0, 0, 0, 0.8);
   --card-border: #eceff3;
   --card-role-text: rgba(0, 0, 0, 0.6);
   --article-title: #36394a;
-  --article-button-bg: #ffffff;
+  --article-button-bg: #fefefe;
   --article-button-border: rgba(18, 55, 105, 0.08);
   --article-button-shadow: rgba(164, 172, 185, 0.24);
   --article-button-hover: #f8f9fa;
   --article-divider: #eceff3;
-  --testimonial-bg: #fff;
+  --testimonial-bg: #fefefe;
   --testimonial-name: #000000;
   --testimonial-border: #eceff3;
 }
@@ -185,6 +185,37 @@ body {
   padding-top: 112px; /* Account for fixed navbar height */
 }
 
+/* Top-of-page dreamy sky gradient behind hero (fills initial viewport) */
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100vh; /* Fallback */
+  pointer-events: none;
+  z-index: -1; /* Render behind content */
+  background: radial-gradient(
+      313% 100% at 50% 0%,
+      rgb(58, 128, 196) 0%,
+      /* lighter top blue */ rgb(80, 150, 210) 52.6126%,
+      rgb(120, 180, 225) 67.3874%,
+      rgb(255, 255, 255) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      /* gentle top lightening */ rgba(255, 255, 255, 0) 45%
+    );
+}
+
+@supports (height: 100svh) {
+  .home::before {
+    height: 100svh; /* Stable viewport height on mobile */
+  }
+}
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -193,10 +224,10 @@ body {
   right: 0;
   width: 100%;
   z-index: 1000;
-  background-color: var(--navbar-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: color 0.3s ease;
 }
 
 .navbar-content {
@@ -228,6 +259,7 @@ body {
   width: auto;
   max-width: 100px;
   object-fit: contain;
+  filter: brightness(0) invert(1); /* Make logo white-toned */
 }
 
 .nav-links {
@@ -240,18 +272,18 @@ body {
   font-size: 16px;
   line-height: 24px;
   text-decoration: none;
-  color: var(--text-normal);
+  color: #ffffff !important;
   font-weight: 400;
   transition: color 0.2s ease;
 }
 
 .nav-link.active {
-  color: var(--text-muted);
+  color: #ffffff !important;
   font-weight: 500;
 }
 
 .nav-link:hover {
-  color: var(--text-muted);
+  color: #ffffff !important;
 }
 
 /* Mobile Menu */
@@ -283,7 +315,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   width: 354px;
-  background-color: var(--navbar-bg);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border-radius: 10px;
@@ -313,7 +345,7 @@ body {
   font-size: 16px;
   line-height: 24px;
   text-decoration: none;
-  color: #818898;
+  color: #ffffff;
   font-weight: 400;
   padding: 8px 12px;
   border-radius: 6px;
@@ -323,14 +355,14 @@ body {
 }
 
 .mobile-nav-link.active {
-  color: #36394a;
+  color: #ffffff;
   font-weight: 500;
   border-radius: 6px;
 }
 
 .mobile-nav-link:hover {
-  color: #36394a;
-  background-color: rgba(0, 0, 0, 0.03);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 /* Hero Section */
@@ -338,9 +370,12 @@ body {
   margin: 0 auto 32px;
   width: 720px;
   max-width: 90%;
-  background-color: var(--hero-bg);
+  background: rgba(255, 255, 255, 0.045); /* more transparent */
   border-radius: 32px;
-  border: 1px solid var(--hero-border);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .hero-content {
@@ -355,12 +390,13 @@ body {
   line-height: 40px;
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: #ffffff;
   margin: 0;
   font-family: "geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Default gradient text for outside hero remains below; hero overrides follow */
 .gradient-text {
   background: linear-gradient(
     to bottom,
@@ -373,6 +409,13 @@ body {
   background-clip: text;
 }
 
+/* Inside hero, use solid white for readability over frosted glass */
+.hero .gradient-text {
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
 .hero-body {
   display: flex;
   flex-direction: column;
@@ -382,12 +425,12 @@ body {
 .body-text {
   font-size: 16px;
   line-height: 28px;
-  color: var(--text-normal);
+  color: #ffffff;
   font-weight: 400;
 }
 
 .highlight-text {
-  color: var(--text-muted);
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -456,7 +499,7 @@ body {
 }
 
 .watch-btn {
-  background: white;
+  background: #fefefe;
   border: 1px solid rgba(18, 55, 105, 0.08);
   border-radius: 6px;
   padding: 4px 14px;
@@ -505,7 +548,7 @@ body {
   width: 90%;
   max-width: 800px;
   max-height: 90vh;
-  background: white;
+  background: #fefefe;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -602,7 +645,7 @@ body {
   width: 656px;
   max-width: 90%;
   max-height: 90vh;
-  background: #ffffff;
+  background: #fefefe;
   border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -754,7 +797,7 @@ body {
   width: 90%;
   max-width: 1200px;
   max-height: 90vh;
-  background: #ffffff;
+  background: #fefefe;
   border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);

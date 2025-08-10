@@ -29,19 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, delay);
     }
   });
-  // Navbar scrolling effect
-  const navbar = document.querySelector(".navbar");
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 10) {
-      navbar.style.backgroundColor = "var(--navbar-bg-scrolled)";
-      navbar.style.backdropFilter = "blur(12px)";
-      navbar.style.webkitBackdropFilter = "blur(12px)";
-    } else {
-      navbar.style.backgroundColor = "var(--navbar-bg)";
-      navbar.style.backdropFilter = "blur(8px)";
-      navbar.style.webkitBackdropFilter = "blur(8px)";
-    }
-  });
+  // Navbar is transparent over gradient; no dynamic background needed
 
   // Navigation links functionality
   const navLinks = document.querySelectorAll(".nav-link");
