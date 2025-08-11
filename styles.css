@@ -265,8 +265,8 @@ body {
     height: 42vh; /* slightly taller cloud viewport on mobile */
   }
   .cloud-layer::before {
-    width: 640px;
-    height: 260px;
+    width: 192px; /* 30% of 640px */
+    height: 78px; /* 30% of 260px */
     left: -60vw;
     opacity: 1;
     animation-duration: 55s;
