@@ -267,9 +267,11 @@ body {
   .cloud-layer::before {
     width: 192px; /* 30% of 640px */
     height: 78px; /* 30% of 260px */
-    left: -60vw;
+    left: -96px; /* start half visible on load */
     opacity: 1;
     animation-duration: 55s;
+    animation-delay: 0s; /* ensure no delay */
+    will-change: transform; /* hint for smoother start */
   }
   /* cloud-2 mobile variant removed */
 }
