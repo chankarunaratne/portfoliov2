@@ -445,7 +445,7 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   width: 354px;
-  background: rgba(12, 18, 28, 0.6); /* darker frosted glass */
+  background: rgb(12, 18, 28); /* fully opaque */
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: saturate(130%) blur(22px);
   -webkit-backdrop-filter: saturate(130%) blur(22px);
