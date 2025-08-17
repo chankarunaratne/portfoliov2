@@ -49,6 +49,7 @@
 html {
   width: 100%;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {
@@ -63,6 +64,41 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  height: 100%;
+  position: relative; /* allow #skyCanvas absolute positioning to scroll with page */
+}
+
+/* Global sky canvas behind all content */
+#skyCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 148svh; /* slightly shorter so white page begins earlier */
+  display: block;
+  z-index: -1; /* above gradient (-3), below content */
+  pointer-events: none; /* Don’t block clicks */
+  /* Fade out near bottom of viewport to reveal page gradient */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 94%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 94%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Ensure main content sits above the canvas */
+.content-root {
+  position: relative;
+  z-index: 1;
 }
 
 /* Animation classes for smooth loading */
@@ -200,15 +236,15 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 130vh; /* Extend further past viewport */
+  height: 148svh; /* End sky a bit earlier */
   pointer-events: none;
-  z-index: -2; /* Render behind clouds and all content */
+  z-index: -3; /* Behind WebGL sky and all content */
   /* Larger white ramp at the bottom for a smoother transition */
   background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 85%,
-      rgba(255, 255, 255, 0.7) 95%,
+      rgba(255, 255, 255, 0) 80%,
+      rgba(255, 255, 255, 0.7) 90%,
       #ffffff 100%
     ),
     radial-gradient(
@@ -231,6 +267,11 @@ body {
   pointer-events: none;
   z-index: -1; /* below content, above ::before sky */
   overflow: visible;
+}
+
+/* Disable old CSS cloud image layer now that WebGL sky is used */
+.cloud-layer {
+  display: none !important;
 }
 
 .cloud-layer::before {
@@ -278,19 +319,18 @@ body {
 
 @supports (height: 100svh) {
   .home::before {
-    height: 130svh; /* default svh height; desktop override below */
+    height: 148svh; /* extend sky but end a bit earlier */
   }
 }
 
 /* Desktop-only: extend gradient further below the viewport */
 @media (min-width: 769px) {
   .home::before {
-    height: 140vh; /* fallback */
-    height: 140svh; /* stable viewport unit where supported */
+    height: 148svh; /* desktop: extend sky but end earlier */
   }
   .intro-stack {
-    min-height: 140vh; /* ensure following content starts after gradient */
-    min-height: 140svh;
+    min-height: 150vh; /* ensure following content starts after gradient */
+    min-height: 150svh;
   }
   /* Desktop: keep cloud fixed at a specific spot (no travel) */
   .cloud-layer::before {
@@ -306,6 +346,19 @@ body {
 
 /* Mobile: extend gradient down to the end of intro stack */
 @media (max-width: 768px) {
+  .intro-stack::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1; /* above mobile gradient (::after -2), below content */
+    pointer-events: none;
+    background-image: url("assets/cloud.png"), url("assets/cloud.png");
+    background-repeat: no-repeat, no-repeat;
+    background-size: 28vw auto, 24vw auto;
+    background-position: left -10vw top 18vh, right -12vw top 44vh;
+    filter: blur(0.6px) saturate(110%);
+    opacity: 0.95;
+  }
   .intro-stack::after {
     content: "";
     position: absolute;
