@@ -302,32 +302,39 @@ class SkyRenderer {
       const mobileClearStrength = 0.25; // much weaker clearing
       const mobileClearEllipseX = 1.2; // narrower horizontally (less clearing across width)
       const mobileClearEllipseY = 0.9; // slightly narrower vertically
+      // Slightly increase cloud coverage on mobile so sides feel fuller
+      const mobileCloudDensity = 0.7;
       SKY_CONFIG.clearRadius = mobileClearRadius;
       SKY_CONFIG.clearStrength = mobileClearStrength;
       SKY_CONFIG.clearEllipse.x = mobileClearEllipseX;
       SKY_CONFIG.clearEllipse.y = mobileClearEllipseY;
+      SKY_CONFIG.cloudDensity = mobileCloudDensity;
       this.material.uniforms.uClearRadius.value = mobileClearRadius;
       this.material.uniforms.uClearStrength.value = mobileClearStrength;
       this.material.uniforms.uClearEllipse.value.set(
         mobileClearEllipseX,
         mobileClearEllipseY
       );
+      this.material.uniforms.uCloudDensity.value = mobileCloudDensity;
     } else {
       // Restore desktop defaults
       const desktopClearRadius = 0.33;
       const desktopClearStrength = 0.6;
       const desktopClearEllipseX = 1.6;
       const desktopClearEllipseY = 1.0;
+      const desktopCloudDensity = 0.6;
       SKY_CONFIG.clearRadius = desktopClearRadius;
       SKY_CONFIG.clearStrength = desktopClearStrength;
       SKY_CONFIG.clearEllipse.x = desktopClearEllipseX;
       SKY_CONFIG.clearEllipse.y = desktopClearEllipseY;
+      SKY_CONFIG.cloudDensity = desktopCloudDensity;
       this.material.uniforms.uClearRadius.value = desktopClearRadius;
       this.material.uniforms.uClearStrength.value = desktopClearStrength;
       this.material.uniforms.uClearEllipse.value.set(
         desktopClearEllipseX,
         desktopClearEllipseY
       );
+      this.material.uniforms.uCloudDensity.value = desktopCloudDensity;
     }
   }
 
@@ -381,7 +388,7 @@ class SkyRenderer {
     // Mobile-only adjustment: keep the clear band narrower so side clouds are visible
     // without affecting the hero content. Desktop behavior remains unchanged.
     if (viewportWidth <= 768) {
-      const maxCenterBand = 0.78; // leave ~11% per side for visible clouds on mobile
+      const maxCenterBand = 0.66; // leave ~17% per side for stronger side clouds on mobile
       widthFraction = Math.min(widthFraction, maxCenterBand);
     }
     SKY_CONFIG.sideClearWidth = widthFraction;
