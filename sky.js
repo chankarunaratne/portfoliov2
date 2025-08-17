@@ -141,8 +141,8 @@ class SkyRenderer {
       // Sky gradient
       vec3 getSkyColor(vec2 uv) {
         float horizon = 1.0 - uv.y;
-        vec3 topColor = vec3(0.4, 0.7, 1.0);
-        vec3 horizonColor = vec3(0.8, 0.9, 1.0);
+        vec3 topColor = vec3(0.227, 0.502, 0.769);
+        vec3 horizonColor = vec3(0.627, 0.784, 0.922);
         return mix(topColor, horizonColor, horizon * horizon);
       }
 
